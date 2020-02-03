@@ -27,11 +27,16 @@
 /// THE SOFTWARE.
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CartViewController: UIViewController {
   @IBOutlet private var checkoutButton: UIButton!
   @IBOutlet private var totalItemsLabel: UILabel!
   @IBOutlet private var totalCostLabel: UILabel!
+  @IBOutlet weak var tableView: UITableView!
+  private let disposeBag = DisposeBag()
+  private let cartItens = Observable.just(ShoppingCart.sharedCart.cartItens)
 }
 
 //MARK: - View lifecycle
@@ -40,6 +45,20 @@ extension CartViewController {
     super.viewDidLoad()
     title = "Cart"
     configureFromCart()
+    setupCellConfiguration()
+  }
+}
+
+//MARK: - Rx Setup
+extension CartViewController {
+  func setupCellConfiguration(){
+    cartItens
+      .bind(to: tableView
+        .rx
+        .items(cellIdentifier: CartCell.Identifier, cellType: CartCell.self)) {
+          row, currentItem, cell in
+          cell.configure(withChocolate: currentItem.key, andAmount: currentItem.value)
+    }.disposed(by: disposeBag)
   }
 }
 

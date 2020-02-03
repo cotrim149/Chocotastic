@@ -44,6 +44,33 @@ extension ShoppingCart {
     }
   }
   
+  var cartItens: [Chocolate:Int] {
+    guard chocolates.value.count > 0 else {
+      
+      return [Chocolate():0]
+    }
+    //Unique the chocolates
+    let setOfChocolates = Set<Chocolate>(chocolates.value)
+
+    var chocolatesDict = Dictionary<Chocolate,Int>()
+    //Check how many of each exists
+    _ = setOfChocolates.map {
+      chocolate in
+      let count: Int = chocolates.value.reduce(0) {
+        runningTotal, reduceChocolate in
+        if chocolate == reduceChocolate {
+          return runningTotal + 1
+        }
+        
+        return runningTotal
+      }
+      
+      chocolatesDict[chocolate] = count
+    }
+    
+    return chocolatesDict
+  }
+  
   var itemCountString: String {
     guard chocolates.value.count > 0 else {
       return "🚫🍫"

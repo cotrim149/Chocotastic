@@ -1,15 +1,15 @@
-/// Copyright (c) 2019 Razeware LLC
-///
+/// Copyright (c) 2020 Razeware LLC
+/// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-///
+/// 
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-///
+/// 
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-///
+/// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -26,48 +26,18 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
+import UIKit
 
-import Foundation
-
-//MARK: - Mmmm...chocolate...
-struct Chocolate: Equatable, Hashable {
-  let priceInDollars: Float
-  let countryName: String
-  let countryFlagEmoji: String
+class CartCell: UITableViewCell {
+  static let Identifier = "CartCell"
   
-  init() {
-    priceInDollars = 0
-    countryName = ""
-    countryFlagEmoji = ""
+  @IBOutlet private var emojiLabel: UILabel!
+  @IBOutlet private var price: UILabel!
+  
+  func configure(withChocolate chocolate: Chocolate, andAmount amount:Int) {
+    emojiLabel.text = "🍫 \(chocolate.countryFlagEmoji) x \(amount)"
+    let currentPrice = chocolate.priceInDollars * Float(amount)
+    price.text = CurrencyFormatter.dollarsFormatter.string(from: currentPrice)
   }
-
-  init(priceInDollars: Float, countryName: String, countryFlagEmoji: String) {
-    self.priceInDollars = priceInDollars
-    self.countryName = countryName
-    self.countryFlagEmoji = countryFlagEmoji
-  }
-
-  // An array of chocolate from europe
-  static let ofEurope: [Chocolate] = {
-    let belgian = Chocolate(priceInDollars: 8,
-                            countryName: "Belgium",
-                            countryFlagEmoji: "🇧🇪")
-    let british = Chocolate(priceInDollars: 7,
-                            countryName: "Great Britain",
-                            countryFlagEmoji: "🇬🇧")
-    let dutch = Chocolate(priceInDollars: 8,
-                          countryName: "The Netherlands",
-                          countryFlagEmoji: "🇳🇱")
-    let german = Chocolate(priceInDollars: 7,
-                           countryName: "Germany", countryFlagEmoji: "🇩🇪")
-    let swiss = Chocolate(priceInDollars: 10,
-                          countryName: "Switzerland",
-                          countryFlagEmoji: "🇨🇭")
-    
-    return [belgian,
-            british,
-            dutch,
-            german,
-            swiss]
-  }()
 }
+

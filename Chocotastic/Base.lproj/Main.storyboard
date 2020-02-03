@@ -152,22 +152,73 @@
                                     <action selector="reset" destination="I47-Ej-q1x" eventType="touchUpInside" id="Dcw-2s-pFp"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BgP-SP-gZX">
+                                <rect key="frame" x="0.0" y="168" width="375" height="499"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CartCell" rowHeight="91" id="3VH-lq-l7E" customClass="CartCell" customModule="Chocotastic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="91"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3VH-lq-l7E" id="oyC-2E-hUj">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍫🇬🇮" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4V-5L-jIY">
+                                                    <rect key="frame" x="15" y="18" width="100" height="55"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="uhb-a3-DX2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwe-GX-K9i">
+                                                    <rect key="frame" x="318" y="35" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="PWc-VX-ieT"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="v4V-5L-jIY" firstAttribute="top" secondItem="oyC-2E-hUj" secondAttribute="top" constant="18" id="1FW-Ci-T0n"/>
+                                                <constraint firstItem="cwe-GX-K9i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v4V-5L-jIY" secondAttribute="trailing" constant="20" id="2m4-Yv-TXa"/>
+                                                <constraint firstItem="v4V-5L-jIY" firstAttribute="leading" secondItem="oyC-2E-hUj" secondAttribute="leading" constant="15" id="91X-Ak-SiL"/>
+                                                <constraint firstItem="v4V-5L-jIY" firstAttribute="centerY" secondItem="oyC-2E-hUj" secondAttribute="centerY" id="PnF-hh-j2V"/>
+                                                <constraint firstAttribute="trailing" secondItem="cwe-GX-K9i" secondAttribute="trailing" constant="15" id="RJC-t9-wpR"/>
+                                                <constraint firstItem="cwe-GX-K9i" firstAttribute="centerY" secondItem="v4V-5L-jIY" secondAttribute="centerY" id="wOn-s8-4ER"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="emojiLabel" destination="v4V-5L-jIY" id="QF3-ip-Hfw"/>
+                                            <outlet property="price" destination="cwe-GX-K9i" id="Fdk-vk-dhQ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="kRW-7S-Wph" secondAttribute="trailing" constant="20" id="8ch-Ki-ii7"/>
                             <constraint firstItem="vXc-Eo-ab0" firstAttribute="trailing" secondItem="YAf-ab-i1o" secondAttribute="trailing" id="IgZ-yh-CgL"/>
+                            <constraint firstItem="BgP-SP-gZX" firstAttribute="leading" secondItem="vp7-Rt-MFQ" secondAttribute="leading" id="KjW-CP-GCI"/>
                             <constraint firstItem="kRW-7S-Wph" firstAttribute="leading" secondItem="vp7-Rt-MFQ" secondAttribute="leading" constant="20" id="LHp-pK-Zmf"/>
                             <constraint firstItem="vXc-Eo-ab0" firstAttribute="top" secondItem="YAf-ab-i1o" secondAttribute="bottom" constant="8" id="YJx-qr-zVb"/>
+                            <constraint firstItem="BgP-SP-gZX" firstAttribute="top" secondItem="vXc-Eo-ab0" secondAttribute="bottom" id="Yep-wI-fhL"/>
                             <constraint firstItem="kRW-7S-Wph" firstAttribute="top" secondItem="Ypu-5c-era" secondAttribute="bottom" constant="10" id="b16-AH-o7l"/>
+                            <constraint firstItem="k2E-ef-SAy" firstAttribute="top" secondItem="BgP-SP-gZX" secondAttribute="bottom" id="bnn-4B-cPI"/>
                             <constraint firstAttribute="trailing" secondItem="YAf-ab-i1o" secondAttribute="trailing" constant="20" id="eo2-bW-da9"/>
                             <constraint firstItem="YAf-ab-i1o" firstAttribute="top" secondItem="kRW-7S-Wph" secondAttribute="bottom" constant="10" id="vpu-Y8-bsZ"/>
+                            <constraint firstAttribute="trailing" secondItem="BgP-SP-gZX" secondAttribute="trailing" id="vvL-3j-9Vg"/>
                             <constraint firstItem="YAf-ab-i1o" firstAttribute="leading" secondItem="vp7-Rt-MFQ" secondAttribute="leading" constant="20" id="wR5-5c-b1j"/>
                             <constraint firstItem="vXc-Eo-ab0" firstAttribute="leading" secondItem="YAf-ab-i1o" secondAttribute="leading" id="wV1-Y1-8Qp"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="checkoutButton" destination="YAf-ab-i1o" id="MO0-DI-WTg"/>
+                        <outlet property="tableView" destination="BgP-SP-gZX" id="zuo-cA-IUY"/>
                         <outlet property="totalCostLabel" destination="HTV-4C-l4R" id="R1T-iE-cF8"/>
                         <outlet property="totalItemsLabel" destination="bHe-rh-lzA" id="zUe-Cm-yrX"/>
                     </connections>
